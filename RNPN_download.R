@@ -15,13 +15,13 @@ library(birk) # convert units
 library(rnpn)
 library(geosphere)
 
-#npn_species()
+#spp<-npn_species()
 
 # download data
 dataQ<-npn_download_status_data(
   request_source="FartFace2020",
   years=c(seq(2012,2019,1)),
-  species_id=c("27"),
+  species_id=c("3"),
   phenophase_ids = "498"
 )
 

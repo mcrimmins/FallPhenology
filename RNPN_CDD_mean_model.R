@@ -12,10 +12,15 @@ library(birk) # convert units
 
 
 # load dataset from RNPN_download.R
-#load("/cloud/project/RNPN_CDD_498_redmaple_base77F_052920.Rdata")
+load("/cloud/project/RNPN_CDD_498_redmaple_base77F_052920.Rdata")
 #load("/cloud/project/RNPN_CDD_498_stripedmaple_base77F_052920.Rdata")
 #load("/cloud/project/RNPN_CDD_498_sugarmaple_base77F_052920.Rdata")
-load("/cloud/project/RNPN_CDD_498_quakingaspen_base77F_052920.Rdata")
+#load("/cloud/project/RNPN_CDD_498_quakingaspen_base77F_052920.Rdata")
+
+# thin on latitudes; based on rpart
+#siteMean<-subset(siteMean, latitude>35 & latitude<42.4)
+# thin on daylength; based on rpart
+siteMean<-subset(siteMean, dayLength>10.9 & dayLength<13.3)
 
 # analysis, add in daylength corr, spearman rank corr...uses data.table
 dataT <- data.table(siteMean)
@@ -64,4 +69,4 @@ for(i in 1:nrow(dataJoin)){
   print((i/nrow(dataJoin))*100)
 }
 # save.image("C:/Users/Crimmins/Google Drive/MAC/r-stats/NPN/NPN_GDD_371_model.RData") saved
-save(dataJoin, file="RNPN_CDD_498_quakingaspen_base77_model_052920.RData")
+save(dataJoin, file="RNPN_CDD_498_redmaple_base77_model_060820_dayLength_10_13.RData")
