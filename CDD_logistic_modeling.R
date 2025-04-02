@@ -6,10 +6,12 @@ library(ggplot2)
 library(broom)
 
 # load data
-load("~/RProjects/FallPhenology/RNPN_CDD_498_redmaple_base77F_060820_allObs.Rdata")
+# load("~/RProjects/FallPhenology/RNPN_CDD_498_redmaple_base77F_060820_allObs.Rdata")
+load("~/RProjects/FallPhenology/RNPN_CDD_498_stripedmaple_base77F_061020_allObs.Rdata")
+#load("~/RProjects/FallPhenology/RNPN_CDD_498_sugarmaple_base77F_061020_allObs.Rdata")
 
 # subset data
-siteMean<-subset(siteMean, prismGDD<=1000)
+siteMean<-subset(siteMean, prismGDD<=1500)
 
 # set -1 to NA
 siteMean$phenophase_status[siteMean$phenophase_status==-1]<-NA
@@ -38,7 +40,7 @@ plot(siteMean$prismGDD, siteMean$phenophase_status, pch = 16, xlab = "CDD", ylab
 lines(prismGDD, yweight)
 
 # model diags
-pheno<-glm(phenophase_status ~ dayLength, data=siteMean, family = "binomial")
+pheno<-glm(phenophase_status ~ prismGDD, data=siteMean, family = "binomial")
 
 summary(pheno)
 tidy(pheno)

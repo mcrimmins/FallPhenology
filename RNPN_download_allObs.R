@@ -21,7 +21,7 @@ library(geosphere)
 dataQ<-npn_download_status_data(
   request_source="FartFace2020",
   years=c(seq(2012,2019,1)),
-  species_id=c("3"),
+  species_id=c("61"),
   phenophase_ids = "498"
 )
 
@@ -104,4 +104,4 @@ attr(siteMean,"start_date" )<-sdate
 #attr(dataQ,"end_date" )<-end_date
 attr(siteMean,"CDD_base_F" )<-base
 
-save(siteMean, file="RNPN_CDD_498_redmaple_base77F_060820_allObs.Rdata")
+save(siteMean, file="RNPN_CDD_498_sugarmaple_base77F_061020_allObs.Rdata")
